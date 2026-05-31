@@ -35,4 +35,4 @@ withTreeChan manager path predicate chan act =
   bracket
     (watchTreeChan manager path predicate chan)
     id
-    (\_ -> act)
+    (const act)

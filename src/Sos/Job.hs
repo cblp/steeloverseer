@@ -122,6 +122,6 @@ runForegroundProcess c =
     bracket
       (installHandler sig Ignore Nothing)
       (\handler -> installHandler sig handler Nothing)
-      (\_ -> act)
+      (const act)
 
 #endif

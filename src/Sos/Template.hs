@@ -12,6 +12,7 @@ import Sos.Utils
 import Control.Applicative
 import Control.Monad.Catch (MonadThrow, throwM)
 import Data.ByteString (ByteString)
+import Data.Char (isDigit)
 import Text.ParserCombinators.ReadP
 
 import qualified Data.Text.Encoding as Text
@@ -47,10 +48,7 @@ parseTemplate raw_template =
   parser = some (capturePart <|||> textPart) <* eof
    where
     capturePart :: ReadP Int
-    capturePart = read <$> (char '\\' *> munch1 digit)
-     where
-      digit :: Char -> Bool
-      digit c = c >= '0' && c <= '9'
+    capturePart = read <$> (char '\\' *> munch1 isDigit)
 
     textPart :: ReadP ByteString
     textPart = packBS <$> munch1 (/= '\\')
