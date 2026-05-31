@@ -25,6 +25,7 @@ build-tools:
 
 tested-with:
   - GHC==9.2.2
+  - GHC==9.2.8
 
 default-extensions:
   - BangPatterns
