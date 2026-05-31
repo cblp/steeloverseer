@@ -246,12 +246,8 @@ watchTree :: forall a. FilePath -> Stream (Of FileEvent) Managed a
 watchTree target = do
   cwd <- liftIO getCurrentDirectory
 
-  let config :: FSNotify.WatchConfig
-      config = FSNotify.defaultConfig
-        { FSNotify.confDebounce = FSNotify.Debounce 0.1 }
-
-      stream :: Stream (Of FSNotify.Event) Managed a
-      stream = FSNotify.watchTree config target (const True)
+  let stream :: Stream (Of FSNotify.Event) Managed a
+      stream = FSNotify.watchTree FSNotify.defaultConfig target (const True)
 
   S.for stream $ \case
     FSNotify.Added    path _ _ -> S.yield (FileAdded    (go cwd path))

@@ -6,7 +6,6 @@ module System.FSNotify.Streaming
   , Event(..)
   , WatchManager
   , WatchConfig(..)
-  , Debounce(..)
   , defaultConfig
   ) where
 

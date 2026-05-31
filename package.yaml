@@ -26,6 +26,7 @@ build-tools:
 tested-with:
   - GHC==9.2.2
   - GHC==9.2.8
+  - GHC==9.4.8
 
 default-extensions:
   - BangPatterns
@@ -49,7 +50,7 @@ library:
     - ansi-terminal >= 0.6.2
     - bytestring    >= 0.10
     - exceptions
-    - fsnotify      >= 0.3 && < 0.4
+    - fsnotify      >= 0.3 && < 0.5
     - managed       >= 1.0.1
     - process       >= 1.6 && < 1.7
     - regex-tdfa    >= 1.2
